@@ -1,2 +1,2 @@
-# easygaode
-高德地图SDK
+# EasyGaoDe
+高德地图PHP SDK

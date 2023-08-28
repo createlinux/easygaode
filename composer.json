@@ -1,0 +1,19 @@
+{
+    "name": "createlinux/easygaode",
+    "description": "EasyGaoDeo，高德地图PHP-SDK",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Createlinux\\EasyGaoDe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CreateLinux",
+            "email": "mxcforworker@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
