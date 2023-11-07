@@ -1,9 +1,12 @@
 <?php
+
 namespace Createlinux\EasyGaoDe;
+
 use Createlinux\EasyGaoDe\IP\IPLocator;
 
 class Application
 {
+    private static array $instances = [];
     protected string $key;
 
     public function __construct(string $key)
@@ -14,9 +17,18 @@ class Application
         }
     }
 
+    /**
+     * @title 请填写标题
+     * @isMenu 1
+     * @remark
+     * @return IPLocator|void
+     */
     public function createIPLocator()
     {
-        return new IPLocator($this->getKey());
+        if (!isset(self::$instances[IPLocator::class])){
+            self::$instances[IPLocator::class] = new IPLocator($this->getKey());
+        }
+        return self::$instances[IPLocator::class];
     }
 
     /**
