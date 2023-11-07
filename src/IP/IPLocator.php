@@ -9,7 +9,7 @@ use Createlinux\EasyGaoDe\Http\Request;
  */
 class IPLocator
 {
-    protected string $url = 'https://restapi.amap.com/v3/ip?parameters';
+    protected string $url = 'https://restapi.amap.com/v3/ip';
     protected Request $request;
     /**
      * @var string 用户在高德地图官网申请Web服务API类型KEY
