@@ -2,6 +2,7 @@
 
 namespace Createlinux\EasyGaoDe;
 
+use Createlinux\EasyGaoDe\GdeoCode\GeoCode;
 use Createlinux\EasyGaoDe\IP\IPLocator;
 
 class Application
@@ -18,17 +19,27 @@ class Application
     }
 
     /**
-     * @title 请填写标题
-     * @isMenu 1
-     * @remark
+     * @title IP定位：根据IP返回省市
      * @return IPLocator|void
      */
     public function createIPLocator()
     {
-        if (!isset(self::$instances[IPLocator::class])){
+        if (!isset(self::$instances[IPLocator::class])) {
             self::$instances[IPLocator::class] = new IPLocator($this->getKey());
         }
         return self::$instances[IPLocator::class];
+    }
+
+    /**
+     * @title 地理编码/逆地理编码
+     * @return GeoCode|mixed
+     */
+    public function createGeoCode()
+    {
+        if (!isset(self::$instances[GeoCode::class])) {
+            self::$instances[GeoCode::class] = new GeoCode($this->getKey());
+        }
+        return self::$instances[GeoCode::class];
     }
 
     /**
