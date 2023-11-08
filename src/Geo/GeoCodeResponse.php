@@ -1,6 +1,6 @@
 <?php
 
-namespace Createlinux\EasyGaoDe\GdeoCode;
+namespace Createlinux\EasyGaoDe\Geo;
 
 use Createlinux\EasyGaoDe\Abstracts\ResponseAbstract;
 

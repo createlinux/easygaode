@@ -1,6 +1,6 @@
 <?php
 
-namespace Createlinux\EasyGaoDe\GdeoCode;
+namespace Createlinux\EasyGaoDe\Gdeo;
 
 use Createlinux\EasyGaoDe\Http\Request;
 
