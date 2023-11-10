@@ -4,22 +4,49 @@ namespace Createlinux\EasyGaoDe\Abstracts;
 
 abstract class ResponseAbstract
 {
-    abstract public function getArrayBody();
+    /**
+     * @var string 返回结果
+     */
+    protected string $result;
+    /**
+     * @var array
+     */
+    protected $resultArray = [];
+
+    public function __construct(string $result)
+    {
+        $this->result = $result;
+        $this->resultArray = json_decode($this->result, true);
+    }
+
+    public function getArrayBody()
+    {
+        return $this->resultArray;
+    }
+
+    public function getStatus()
+    {
+        return $this->resultArray['status'] ?? null;
+    }
+
+    public function getInfo()
+    {
+        return $this->resultArray['info'] ?? null;
+    }
 
     /**
-     * @return mixed 值为0或1,0表示失败；1表示成功
+     * @return mixed|null 返回状态说明,10000代表正确,详情参阅info状态表
      */
-    abstract public function getStatus();
+    public function getInfoCode()
+    {
+        return $this->resultArray['infocode'] ?? null;
+    }
 
     /**
-     * @return mixed 返回状态说明，status为0时，info返回错误原因，否则返回“OK”。
+     * @return string 获取原报文体
      */
-    abstract public function getInfo();
-
-    /**
-     * @return mixed 返回状态说明,10000代表正确,详情参阅info状态表
-     */
-    abstract public function getInfoCode();
-
-    abstract public function getOriginBody(): string;
+    public function getOriginBody(): string
+    {
+        return $this->result;
+    }
 }
