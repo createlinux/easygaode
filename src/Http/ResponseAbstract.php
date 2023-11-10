@@ -1,6 +1,6 @@
 <?php
 
-namespace Createlinux\EasyGaoDe\Abstracts;
+namespace Createlinux\EasyGaoDe\Http;
 
 abstract class ResponseAbstract
 {

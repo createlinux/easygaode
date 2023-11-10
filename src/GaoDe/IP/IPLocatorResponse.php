@@ -1,8 +1,8 @@
 <?php
 
-namespace Createlinux\EasyGaoDe\IP;
+namespace Createlinux\EasyGaoDe\GaoDe\IP;
 
-use Createlinux\EasyGaoDe\Abstracts\ResponseAbstract;
+use Createlinux\EasyGaoDe\Http\ResponseAbstract;
 
 /**
  * IP定位返回对象

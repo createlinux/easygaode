@@ -2,11 +2,13 @@
 
 namespace Createlinux\EasyGaoDe;
 
-use Createlinux\EasyGaoDe\GdeoCode\GeoCode;
-use Createlinux\EasyGaoDe\IP\IPLocator;
+use Createlinux\EasyGaoDe\GaoDe\GeoCode\Geo;
+use Createlinux\EasyGaoDe\GaoDe\IP\IPLocator;
 
 class Application
 {
+
+
     private static array $instances = [];
     protected string $key;
 
@@ -31,15 +33,15 @@ class Application
     }
 
     /**
-     * @title 地理编码/逆地理编码
-     * @return GeoCode|mixed
+     * @title 地理编码
+     * @return Geo|mixed
      */
     public function createGeoCode()
     {
-        if (!isset(self::$instances[GeoCode::class])) {
-            self::$instances[GeoCode::class] = new GeoCode($this->getKey());
+        if (!isset(self::$instances[Geo::class])) {
+            self::$instances[Geo::class] = new Geo($this->getKey());
         }
-        return self::$instances[GeoCode::class];
+        return self::$instances[Geo::class];
     }
 
     /**

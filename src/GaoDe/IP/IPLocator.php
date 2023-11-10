@@ -1,6 +1,6 @@
 <?php
 
-namespace Createlinux\EasyGaoDe\IP;
+namespace Createlinux\EasyGaoDe\GaoDe\IP;
 
 use Createlinux\EasyGaoDe\Http\Request;
 
