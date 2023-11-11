@@ -2,6 +2,8 @@
 
 namespace Createlinux\EasyGaoDe\Http;
 
+use Illuminate\Support\Collection;
+
 abstract class ResponseAbstract
 {
     /**

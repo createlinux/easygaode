@@ -2,12 +2,14 @@
 
 namespace Createlinux\EasyGaoDe\GaoDe\IP;
 
+use Createlinux\EasyGaoDe\Abstracts\GaoDeServiceAbstract;
 use Createlinux\EasyGaoDe\Http\Request;
+use Createlinux\EasyGaoDe\Http\ResponseAbstract;
 
 /**
  * 根据IP返回具体位置
  */
-class IPLocator
+class IPLocator extends GaoDeServiceAbstract
 {
     protected string $url = 'https://restapi.amap.com/v3/ip';
     protected Request $request;
@@ -20,25 +22,13 @@ class IPLocator
      */
     protected string $ip;
 
-    /**
-     * @var string 选择数字签名认证的付费用户必填
-     */
-    protected string $sig = '';
 
-    public function __construct(string $key)
-    {
-        $this->request = new Request();
-        $this->key = $key;
-        if (!trim($this->key)) {
-            throw new \InvalidArgumentException("key不能为空");
-        }
-    }
 
     /**
-     * @return IPLocatorResponse
+     * @return ResponseAbstract
      * @throws \Exception
      */
-    public function query()
+    public function query(): ResponseAbstract
     {
         $result = $this->request->get($this->url, [
             'key' => $this->getKey(),
@@ -48,13 +38,7 @@ class IPLocator
         return new IPLocatorResponse($result);
     }
 
-    /**
-     * @return string
-     */
-    public function getKey(): string
-    {
-        return $this->key;
-    }
+
 
     /**
      * @return string
@@ -73,20 +57,5 @@ class IPLocator
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getSig(): string
-    {
-        return $this->sig;
-    }
 
-    /**
-     * @param string $sig 选填，选择数字签名认证的付费用户必填
-     */
-    public function setSig(string $sig): IPLocator
-    {
-        $this->sig = $sig;
-        return $this;
-    }
 }

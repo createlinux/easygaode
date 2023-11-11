@@ -1,24 +1,24 @@
 <?php
 
-namespace GeoCode\Properties;
+namespace Createlinux\EasyGaoDe\GaoDe\GeoCode\Properties;
 class Neighborhood
 {
-    protected string $name;
-    protected string $type;
+    protected array $name;
+    protected array $type;
 
-    public function __construct(string $name, string $type)
+    public function __construct(array $name, array $type)
     {
 
         $this->name = $name;
         $this->type = $type;
     }
 
-    public function getName(): string
+    public function getName(): array
     {
         return $this->name;
     }
 
-    public function getType(): string
+    public function getType(): array
     {
         return $this->type;
     }

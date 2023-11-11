@@ -2,7 +2,7 @@
 
 namespace Createlinux\EasyGaoDe\GaoDe\GeoCode;
 
-use Createlinux\EasyGaoDe\Abstracts\ResponseAbstract;
+use Createlinux\EasyGaoDe\Http\ResponseAbstract;
 
 class ReGeoResponse extends ResponseAbstract
 {
