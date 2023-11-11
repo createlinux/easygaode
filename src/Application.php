@@ -5,6 +5,7 @@ namespace Createlinux\EasyGaoDe;
 use Createlinux\EasyGaoDe\GaoDe\Coordinate\CoordinateConvert;
 use Createlinux\EasyGaoDe\GaoDe\GeoCode\Geo;
 use Createlinux\EasyGaoDe\GaoDe\IP\IPLocator;
+use Createlinux\EasyGaoDe\GaoDe\Weather\WeatherInfo;
 
 class Application
 {
@@ -22,7 +23,7 @@ class Application
     }
 
     /**
-     * @title IP定位：根据IP返回省市
+     * IP定位：根据IP返回省市
      * @return IPLocator|void
      */
     public function createIPLocator()
@@ -34,7 +35,7 @@ class Application
     }
 
     /**
-     * @title 地理编码
+     * 地理编码
      * @return Geo|mixed
      */
     public function createGeoCode()
@@ -46,9 +47,6 @@ class Application
     }
 
     /**
-     * @title 请填写标题
-     * @isMenu 1
-     * @remark
      * @return CoordinateConvert|mixed
      */
     public function createCoordinateConvert()
@@ -65,5 +63,16 @@ class Application
     public function getKey(): string
     {
         return $this->key;
+    }
+
+    /**
+     * @return WeatherInfo|mixed
+     */
+    public function createWeatherInfo()
+    {
+        if (!isset(self::$instances[WeatherInfo::class])) {
+            self::$instances[WeatherInfo::class] = new WeatherInfo($this->getKey());
+        }
+        return self::$instances[WeatherInfo::class];
     }
 }
