@@ -2,6 +2,7 @@
 
 namespace Createlinux\EasyGaoDe;
 
+use Createlinux\EasyGaoDe\GaoDe\Coordinate\CoordinateConvert;
 use Createlinux\EasyGaoDe\GaoDe\GeoCode\Geo;
 use Createlinux\EasyGaoDe\GaoDe\IP\IPLocator;
 
@@ -42,6 +43,20 @@ class Application
             self::$instances[Geo::class] = new Geo($this->getKey());
         }
         return self::$instances[Geo::class];
+    }
+
+    /**
+     * @title 请填写标题
+     * @isMenu 1
+     * @remark
+     * @return CoordinateConvert|mixed
+     */
+    public function createCoordinateConvert()
+    {
+        if (!isset(self::$instances[CoordinateConvert::class])) {
+            self::$instances[CoordinateConvert::class] = new CoordinateConvert($this->getKey());
+        }
+        return self::$instances[CoordinateConvert::class];
     }
 
     /**
