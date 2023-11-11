@@ -2,8 +2,8 @@
 
 namespace Createlinux\EasyGaoDe\GaoDe\GeoCode;
 
-use GeoCode\Properties\Building;
-use GeoCode\Properties\Neighborhood;
+use Createlinux\EasyGaoDe\GaoDe\GeoCode\Properties\Building;
+use Createlinux\EasyGaoDe\GaoDe\GeoCode\Properties\Neighborhood;
 
 class GeoCodeItem
 {
@@ -13,7 +13,7 @@ class GeoCodeItem
     protected string $citycode;
     protected string $city;
     protected string $district;
-    protected string $township;
+    protected array $township;
     protected string $adcode;
     protected string $street;
     protected string $number;
@@ -88,7 +88,7 @@ class GeoCodeItem
         return $this->township;
     }
 
-    public function setTownship(string $township): void
+    public function setTownship(array $township): void
     {
         $this->township = $township;
     }
@@ -158,12 +158,12 @@ class GeoCodeItem
         $this->neighborhood = $neighborhood;
     }
 
-    public function getBuild(): Building
+    public function getBuilding(): Building
     {
         return $this->build;
     }
 
-    public function setBuild(Building $build): void
+    public function setBuilding(Building $build): void
     {
         $this->build = $build;
     }

@@ -2,18 +2,18 @@
 
 namespace Createlinux\EasyGaoDe\GaoDe\GeoCode;
 
-use Createlinux\EasyGaoDe\Http\Request;
-use Createlinux\EasyGaoDe\GaoDe\Traits\Sig;
+use Createlinux\EasyGaoDe\Abstracts\GaoDeServiceAbstract;
+use \Createlinux\EasyGaoDe\Http\ResponseAbstract;
+use Createlinux\EasyGaoDe\Enums\OutputInterface;
 
 /**
  * 地理编码
  */
-class Geo
+class Geo extends GaoDeServiceAbstract
 {
-    use Sig;
 
-    protected $url = 'https://restapi.amap.com/v3/geocode/geo';
-    private string $key;
+
+    protected string $url = 'https://restapi.amap.com/v3/geocode/geo';
     protected string $location = '';
     protected string $address = '';
     protected string $city = '';
@@ -21,27 +21,17 @@ class Geo
     /**
      * @var string 可选输入内容包括：JSON，XML。
      */
-    protected string $output = GeoOutputInterface::json;
+    protected string $output = OutputInterface::json;
     /**
      * @var string callback 值是用户定义的函数名称，此参数只在 output 参数设置为 JSON 时有效。
      */
     protected string $callback = '';
-
-    public function __construct(string $key)
-    {
-        $this->request = new Request();
-        $this->key = $key;
-        if (!trim($this->key)) {
-            throw new \InvalidArgumentException("key不能为空");
-        }
-    }
-
     /**
      * @title 执行查询
      * @return GeoResponse
      * @throws \Exception
      */
-    public function query()
+    public function query(): ResponseAbstract
     {
         $result = $this->request->get($this->url, [
             'key' => $this->getKey(),
