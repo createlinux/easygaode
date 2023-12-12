@@ -47,6 +47,7 @@ class Application
     }
 
     /**
+     * 坐标转换实例
      * @return CoordinateConvert|mixed
      */
     public function createCoordinateConvert()
@@ -66,6 +67,7 @@ class Application
     }
 
     /**
+     * 天气查询实例
      * @return WeatherInfo|mixed
      */
     public function createWeatherInfo()
