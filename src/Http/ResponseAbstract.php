@@ -51,4 +51,20 @@ abstract class ResponseAbstract
     {
         return $this->result;
     }
+
+    /**
+     * @return bool 是否失败
+     */
+    public function isFailed(): bool
+    {
+        return $this->getStatus() != 1;
+    }
+
+    /**
+     * @return bool 是否成功
+     */
+    public function isSuccessful(): bool
+    {
+        return $this->getStatus() == 1;
+    }
 }
