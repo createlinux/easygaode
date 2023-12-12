@@ -26,11 +26,21 @@ abstract class ResponseAbstract
         return $this->resultArray;
     }
 
+    /**
+     *
+     * @remark
+     * @return mixed|null 返回结果状态值 值为0或1,0表示失败；1表示成功
+     */
     public function getStatus()
     {
         return $this->resultArray['status'] ?? null;
     }
 
+    /**
+     *
+     * @remark
+     * @return mixed|null 返回状态说明 返回状态说明，status为0时，info返回错误原因，否则返回“OK”。
+     */
     public function getInfo()
     {
         return $this->resultArray['info'] ?? null;

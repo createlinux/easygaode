@@ -7,4 +7,3 @@ $ipLocator = $easygaode->createIPLocator();
 $ipLocator->setIp('221.15.188.248');
 
 $response = $ipLocator->query();
-print_r($response->isSuccessful());
