@@ -7,5 +7,6 @@ use Createlinux\EasyGaoDe\Http\ResponseAbstract;
 class ReGeoResponse extends ResponseAbstract
 {
 
+    //TODO
 
 }

@@ -4,6 +4,7 @@ namespace Createlinux\EasyGaoDe;
 
 use Createlinux\EasyGaoDe\GaoDe\Coordinate\CoordinateConvert;
 use Createlinux\EasyGaoDe\GaoDe\GeoCode\Geo;
+use Createlinux\EasyGaoDe\GaoDe\GeoCode\ReGeo;
 use Createlinux\EasyGaoDe\GaoDe\IP\IPLocator;
 use Createlinux\EasyGaoDe\GaoDe\Weather\WeatherInfo;
 
@@ -44,6 +45,18 @@ class Application
             self::$instances[Geo::class] = new Geo($this->getKey());
         }
         return self::$instances[Geo::class];
+    }
+
+    /**
+     * 逆地理编码
+     * @return ReGeo|mixed
+     */
+    public function createReGeoCode()
+    {
+        if (!isset(self::$instances[Geo::class])) {
+            self::$instances[ReGeo::class] = new ReGeo($this->getKey());
+        }
+        return self::$instances[ReGeo::class];
     }
 
     /**
