@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "Createlinux\\EasyGaoDe\\": "src/"
-        }
+        },
+        "files": ["src/Helpers/functions.php"]
     },
     "authors": [
         {
