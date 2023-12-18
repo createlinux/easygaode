@@ -3,22 +3,22 @@
 namespace Createlinux\EasyGaoDe\GaoDe\GeoCode\Properties;
 class Neighborhood
 {
-    protected array $name;
-    protected array $type;
+    protected string $name;
+    protected string $type;
 
-    public function __construct(array $name, array $type)
+    public function __construct(string $name, string $type)
     {
 
         $this->name = $name;
         $this->type = $type;
     }
 
-    public function getName(): array
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getType(): array
+    public function getType(): string
     {
         return $this->type;
     }
