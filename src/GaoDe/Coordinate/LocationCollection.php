@@ -2,8 +2,8 @@
 
 namespace Createlinux\EasyGaoDe\GaoDe\Coordinate;
 
-use Illuminate\Support\Collection;
+use Createlinux\EasyGaoDe\Abstracts\CollectionAbstract;
 
-class LocationCollection extends Collection
+class LocationCollection extends CollectionAbstract
 {
 }
