@@ -34,7 +34,7 @@ class CoordinateConvertResponse extends ResponseAbstract
      */
     public function getLocationCollection(): LocationCollection
     {
-        $splitParameter = $this->getCoordsys() === CoordsysInterface::autonavi ? '|': ';';
+        $splitParameter = $this->getCoordsys() === CoordsysInterface::autonavi ? '|' : ';';
         return new LocationCollection(explode($splitParameter, $this->getLocations()));
     }
 

@@ -32,10 +32,10 @@ class CoordinateConvert extends GaoDeServiceAbstract
      */
     function query(): CoordinateConvertResponse
     {
-        if(!$this->getLocations()){
+        if (!$this->getLocations()) {
             throw new \InvalidArgumentException("请使用setLocations()设置坐标对");
         }
-        $result = $this->request->get($this->url,[
+        $result = $this->request->get($this->url, [
             'key' => $this->getKey(),
             'coordsys' => $this->getCoordsys(),
             'locations' => $this->getLocations(),
@@ -43,7 +43,7 @@ class CoordinateConvert extends GaoDeServiceAbstract
             'output' => $this->getOutput()
         ]);
 
-        return new CoordinateConvertResponse($result,$this->getCoordsys());
+        return new CoordinateConvertResponse($result, $this->getCoordsys());
     }
 
     /**
@@ -64,8 +64,8 @@ class CoordinateConvert extends GaoDeServiceAbstract
      */
     public function setLocations(string $locations): void
     {
-        $locationsArray = explode(";",$locations);
-        if(count($locationsArray) > 40){
+        $locationsArray = explode(";", $locations);
+        if (count($locationsArray) > 40) {
             throw new \InvalidArgumentException("locations参数最多支持40对坐标");
         }
         $this->locations = $locations;
