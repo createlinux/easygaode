@@ -10,41 +10,44 @@ use Illuminate\Support\Collection;
 class GeoResponse extends ResponseAbstract
 {
     /**
-     * @var Collection
+     * 地理编码信息列表 结果对象列表
+     * @var GeoCodeCollection
      */
-    protected $geoCodes = null;
-    protected $count = 0;
+    protected ?GeoCodeCollection $geoCodes = null;
 
     /**
      * @title 请填写标题
-     * @return Collection|array<GeoCodeItem>
+     * @return GeoCodeCollection|array<GeoCodeItem>
      */
-    public function getGeoCodes(): Collection
+    public function getGeoCodes(): GeoCodeCollection
     {
         //TODO
         if ($this->geoCodes === null) {
-            $collection = new Collection();
+            $collection = new GeoCodeCollection();
             foreach ($this->resultArray['geocodes'] as $geocode) {
                 $geoCodeItem = new GeoCodeItem();
                 $geoCodeItem->setCity($geocode['city']);
                 $geoCodeItem->setBuilding(new Building(
-                    $geocode['building']['name'] ?? '',
-                    $geocode['building']['type'] ?? ''
+                    egd_empty_array_to_string($geocode['building']['name']),
+                    egd_empty_array_to_string($geocode['building']['type'])
                 ));
                 $geoCodeItem->setAdcode($geocode['adcode']);
                 $geoCodeItem->setCitycode($geocode['citycode']);
                 $geoCodeItem->setLevel($geocode['level']);
                 $geoCodeItem->setCountry($geocode['country']);
-                $geoCodeItem->setDistrict($geocode['district']);
-                $geoCodeItem->setNumber($geocode['number']);
+                $geoCodeItem->setDistrict(egd_empty_array_to_string($geocode['district']));
+                $geoCodeItem->setTownship(egd_empty_array_to_string($geocode['township']));
+                $geoCodeItem->setNumber(egd_empty_array_to_string($geocode['number']));
                 $geoCodeItem->setFormattedAddress($geocode['formatted_address']);
                 $geoCodeItem->setLocation($geocode['location']);
-                $geoCodeItem->setStreet($geocode['street']);
+                $geoCodeItem->setStreet(egd_empty_array_to_string($geocode['street']));
                 $geoCodeItem->setNeighborhood(
-                    new Neighborhood($geocode['neighborhood']['name'], $geocode['neighborhood']['type'])
+                    new Neighborhood(
+                        egd_empty_array_to_string($geocode['neighborhood']['name']),
+                        egd_empty_array_to_string($geocode['neighborhood']['type'])
+                    )
                 );
                 $geoCodeItem->setProvince($geocode['province']);
-                $geoCodeItem->setTownship($geocode['township']);
 
                 $collection->push($geoCodeItem);
             }

@@ -33,8 +33,11 @@ class Geo extends GaoDeServiceAbstract
      * @return GeoResponse
      * @throws \Exception
      */
-    public function query(): ResponseAbstract
+    public function query(): GeoResponse
     {
+        if(!$this->getAddress()){
+            throw new \InvalidArgumentException("缺少address参数，请调用setAddress()方法设置address");
+        }
         $result = $this->request->get($this->url, [
             'key' => $this->getKey(),
             'address' => $this->getAddress(),
