@@ -24,11 +24,6 @@ class CoordinateConvert extends GaoDeServiceAbstract
     protected string $coordsys = '';
 
     /**
-     * @var string 可选值：JSON,XML
-     */
-    protected string $output = OutputInterface::json;
-
-    /**
      *
      * 请求接口查询
      * @remark
@@ -96,23 +91,6 @@ class CoordinateConvert extends GaoDeServiceAbstract
     public function setCoordsys(string $coordsys): void
     {
         $this->coordsys = $coordsys;
-    }
-
-    public function getOutput(): string
-    {
-        return $this->output;
-    }
-
-    /**
-     *
-     * @class
-     * @remark
-     * @param string $output OutputInterface::json或者OutputInterface::xml
-     * @return void
-     */
-    public function setOutput(string $output): void
-    {
-        $this->output = $output;
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Createlinux\EasyGaoDe\Abstracts;
 
+use Createlinux\EasyGaoDe\Enums\OutputInterface;
 use Createlinux\EasyGaoDe\Http\Request;
 use Createlinux\EasyGaoDe\Http\ResponseAbstract;
 
@@ -15,6 +16,10 @@ abstract class GaoDeServiceAbstract
      * @var string 选择数字签名认证的付费用户必填
      */
     protected string $sig = '';
+    /**
+     * @var string 可选输入内容包括：JSON，XML。
+     */
+    protected string $output = OutputInterface::json;
 
 
     public function __construct(string $key)
@@ -27,6 +32,7 @@ abstract class GaoDeServiceAbstract
     }
 
     abstract function query(): ResponseAbstract;
+
     /**
      * @return string
      */
@@ -34,6 +40,7 @@ abstract class GaoDeServiceAbstract
     {
         return $this->key;
     }
+
     /**
      * @return string
      */
@@ -49,5 +56,23 @@ abstract class GaoDeServiceAbstract
     {
         $this->sig = $sig;
         return $this;
+    }
+
+    public function getOutput(): string
+    {
+        return $this->output;
+    }
+
+    /**
+     *
+     * @remark
+     * @param string $output 返回数据格式类型：JSON，XML。设置 JSON 返回结果数据将会以JSON结构构成；
+     * 如果设置 XML 返回结果数据将以 XML 结构构成。可调用OutputInterface::json或者OutputInterface::xml
+     *
+     * @return void
+     */
+    public function setOutput(string $output): void
+    {
+        $this->output = $output;
     }
 }

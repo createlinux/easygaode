@@ -15,10 +15,6 @@ class WeatherInfo extends GaoDeServiceAbstract
     protected string $extensions = 'base';
 
     protected string $city = '';
-    /**
-     * @var string 返回类型
-     */
-    protected string $output = OutputInterface::json;
 
     function query(): WeatherInfoResponse
     {
@@ -52,16 +48,6 @@ class WeatherInfo extends GaoDeServiceAbstract
     public function setExtensions(string $extensions = 'base'): void
     {
         $this->extensions = $extensions;
-    }
-
-    public function getOutput(): string
-    {
-        return $this->output;
-    }
-
-    public function setOutput(string $output): void
-    {
-        $this->output = $output;
     }
 
     public function getCity(): string

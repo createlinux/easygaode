@@ -20,10 +20,7 @@ class Geo extends GaoDeServiceAbstract
     protected string $address = '';
     protected string $city = '';
 
-    /**
-     * @var string 可选输入内容包括：JSON，XML。
-     */
-    protected string $output = OutputInterface::json;
+
     /**
      * @var string callback 值是用户定义的函数名称，此参数只在 output 参数设置为 JSON 时有效。
      */
@@ -92,24 +89,6 @@ class Geo extends GaoDeServiceAbstract
     public function setCity(string $city): void
     {
         $this->city = $city;
-    }
-
-    public function getOutput(): string
-    {
-        return $this->output;
-    }
-
-    /**
-     *
-     * @remark
-     * @param string $output 返回数据格式类型：JSON，XML。设置 JSON 返回结果数据将会以JSON结构构成；
-     * 如果设置 XML 返回结果数据将以 XML 结构构成。可调用OutputInterface::json或者OutputInterface::xml
-     *
-     * @return void
-     */
-    public function setOutput(string $output = OutputInterface::json): void
-    {
-        $this->output = $output;
     }
 
     public function getCallback(): string
