@@ -16,7 +16,6 @@ class Geo extends GaoDeServiceAbstract
 
 
     protected string $url = 'https://restapi.amap.com/v3/geocode/geo';
-    protected string $location = '';
     protected string $address = '';
     protected string $city = '';
 
@@ -46,21 +45,6 @@ class Geo extends GaoDeServiceAbstract
         return new GeoResponse($result);
     }
 
-    public function getLocation(): string
-    {
-        return $this->location;
-    }
-
-    /**
-     *
-     * @remark
-     * @param string $location
-     * @return void
-     */
-    public function setLocation(string $location): void
-    {
-        $this->location = $location;
-    }
 
     public function getAddress(): string
     {
