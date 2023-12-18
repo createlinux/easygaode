@@ -35,7 +35,7 @@ class IPLocatorResponse extends ResponseAbstract
     }
 
     /**
-     * @return mixed|null 所在城市矩形区域范围 所在城市范围的左下右上对标对
+     * @return mixed|null 所在城市矩形区域范围 所在城市范围的左下右上坐标对
      */
     public function getRectangle()
     {
